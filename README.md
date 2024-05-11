@@ -46,7 +46,7 @@ datasets
 
 ## Quick Test
 ### 1. DanceTrack
-Test with DanceTrack dataset(Window with NVIDIA GeForce RTX 3060Ti GPU):
+Test with DanceTrack dataset(NVIDIA GeForce RTX 3060Ti GPU):
 ```shell
 cd MOT-RPF
 python3 tools/run_bamsort_dance.py
@@ -57,7 +57,7 @@ please submit your output files(under <MOT-PRF>/evaldata/trackers/danceTrack/tes
 </div>
 
 ### 2. Person Tracking
-Test with Person Tracking dataset(Window with NVIDIA GeForce RTX 3060Ti GPU):
+Test with Person Tracking dataset(NVIDIA GeForce RTX 3060Ti GPU):
 ```shell
 cd MOT-RPF
 python3 tools/run_bamsort_pt.py
@@ -73,7 +73,7 @@ The following is one of the sequence visualization results：
   <img src="assets/pt.gif" alt="GIF" style="width: 100%;">
 </div>
 
-### 3. Person Following
+### 3. Person Following 
 Test with Person Following dataset(Jetson Xavier NX):
 ```shell
 cd MOT-RPF
@@ -87,16 +87,20 @@ You can get the following visual results(under <MOT-RPF>/evaldata/control):
 </div>
 
 ### 4. World-Real Robot Person Following
-Test with Robot person following in real scenarios(Jetson Xavier NX)：
+Determine the Following target in the first frame (Jetson Xavier NX), The following are the results of our testing in outdoor scenes：
 ```shell
 cd MOT-RPF
 sudo -E /usr/bin/python3 tools/track_bamsort.py
 ```
-The following are the results of our testing in outdoor scenes：
 <div style="display: flex; justify-content: space-between;">
   <img src="assets/rwrpf.gif" alt="GIF" style="width: 100%;">
 </div>
 
+Fusion gesture detection for localization and following of tracked targets:
+```shell
+cd MOT-RPF
+sudo -E /usr/bin/python3 tools/track_bamsort.py --gt
+```
 
 ## Acknowledgement
 - [OC-SORT](https://github.com/noahcao/OC_SORT)

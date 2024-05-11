@@ -95,7 +95,7 @@ def make_parser():
     )
 
     # gesture
-    parser.add_argument("--sort_with_gesture", default=False, action="store_true")
+    parser.add_argument("-gt", "--sort_with_gesture", default=False, action="store_true")
     parser.add_argument("-gp", "--gesture_path_to_config", default="hagrid/configs/SSDLiteMobileNetV3Small.yaml", type=str, help="Path to config")
     parser.add_argument("-glm", "--glandmarks", default=False, action="store_true", help="Use landmarks")
 

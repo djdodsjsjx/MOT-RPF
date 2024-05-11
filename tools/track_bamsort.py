@@ -474,7 +474,8 @@ def imageflow_demo(predictor, gesture, vis_folder, current_time, args):
         if frame_id % 20 == 0:
             logger.info('frame: {:d} det: {:.2f} ms, track: {:.2f} ms, gesture: {:.2f} ms'.format(frame_id, timer_det.average_time * 1000, timer_track.average_time * 1000, ges_timer.average_time * 1000))  # timer.average_time
         outputs, img_info = predictor.inference(color_frame, timer_det)
-        # ges_infos = gesture.inference(img_info["raw_img"], ges_timer)  # 手势推理
+        if args.sort_with_gesture:
+            ges_infos = gesture.inference(img_info["raw_img"], ges_timer)  # 手势推理
         # result_frame = predictor.visual(outputs[0], img_info, predictor.confthre)
 
         if outputs[0] is not None:
@@ -509,15 +510,15 @@ def imageflow_demo(predictor, gesture, vis_folder, current_time, args):
                     results.append(
                         f"{frame_id},{tid},{tlwh[0]:.2f},{tlwh[1]:.2f},{tlwh[2]:.2f},{tlwh[3]:.2f},1.0,-1,-1,-1\n"
                     )
-                if False:
+                if args.sort_with_gesture:
                     # 手势合成
                     for ges_info in ges_infos:  # 判断手势位置是否在轨迹框内
                         ges_x, ges_y, ges_state = ges_info["mx"], ges_info["my"], ges_info["state"]
                         if ges_x >= t[0] and ges_x <= t[2] and ges_y >= t[1] and ges_y <= t[3]:
                             tracker.UpdateGestureState(int(tid - 1), ges_state)
-
-            # fid = tracker.GetFollowIdGesture()  # 手势
-            if unfollow_cnt > 20:
+            if args.sort_with_gesture:
+                fid = tracker.GetFollowIdGesture()  # 手势
+            elif unfollow_cnt > 20:
                 fid = tracker.GetFollowId(img_info['width'])  # 初始帧确定跟踪目标
             isfollow = False
             # 获取距离
