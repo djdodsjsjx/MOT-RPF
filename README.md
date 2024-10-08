@@ -107,3 +107,17 @@ sudo -E /usr/bin/python3 tools/track_bamsort.py --gt
 - [HaGRID](https://github.com/hukenovs/hagrid)
 - [MotionPlanning](https://github.com/zhm-real/MotionPlanning)
 
+## Citation
+If you find this work useful, please consider to cite our paper:
+```text
+@INPROCEEDINGS{10692403,
+  author={Zhu, Huaiyang and Chao, Yuan and Lu, Hengyu},
+  booktitle={2024 5th International Conference on Artificial Intelligence and Electromechanical Automation (AIEA)}, 
+  title={Advancing Robot Person Following with Multi-Object Tracking and Dynamic ID Switching}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={104-115},
+  keywords={Adaptation models;Visualization;Target tracking;Heuristic algorithms;Robot vision systems;Wheels;Switches;Cameras;Real-time systems;Mobile robots;Multi-Object tracking;Robot Person Following;Kalman Filter;Data Association;Path Planning;Motion Control},
+  doi={10.1109/AIEA62095.2024.10692403}}
+```
